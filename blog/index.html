@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Studio 23 TTL — Photography Tips & Local Guides</title>
+  <meta name="description" content="Photography tips, local guides, and session advice from Studio 23 TTL — serving Houston and College Station, TX." />
+  <link rel="canonical" href="https://studio23ttl.com/blog/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --surface: #111111; --border: rgba(201,168,76,0.18);
+      --border-subtle: rgba(201,168,76,0.08); --text-primary: #F5F5F5;
+      --text-secondary: #AAAAAA; --text-muted: #888888;
+      --gold: #C9A84C; --gold-hover: #E2C06C;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--font-body); font-weight: 300; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: 80px;
+      background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 100;
+    }
+    .nav-logo { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--gold); text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    .page-header {
+      margin-top: 80px; padding: 80px 40px 60px;
+      border-bottom: 1px solid var(--border-subtle); text-align: center;
+    }
+    .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .page-header h1 { font-family: var(--font-heading); font-style: italic; font-size: clamp(36px, 5vw, 56px); font-weight: 400; line-height: 1.1; }
+    .page-header p { font-size: 16px; color: var(--text-muted); margin-top: 16px; }
+
+    .blog-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+      padding: 64px 40px;
+    }
+
+    .blog-card { background: var(--surface); border: 1px solid var(--border-subtle); text-decoration: none; display: flex; flex-direction: column; transition: border-color 0.3s; }
+    .blog-card:hover { border-color: var(--border); }
+
+    .blog-card-img {
+      aspect-ratio: 16/9; overflow: hidden; position: relative;
+    }
+    .blog-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.4s, transform 0.4s; }
+    .blog-card:hover .blog-card-img img { filter: brightness(1); transform: scale(1.03); }
+    .blog-card-img .tag {
+      position: absolute; top: 16px; left: 16px;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--border); background: rgba(10,10,10,0.8);
+      padding: 4px 10px; backdrop-filter: blur(4px);
+    }
+
+    .blog-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-body .meta { font-size: 12px; color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 12px; }
+    .blog-card-body h2 { font-family: var(--font-heading); font-size: 22px; font-weight: 500; line-height: 1.3; color: var(--text-primary); margin-bottom: 12px; }
+    .blog-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; flex: 1; }
+    .read-more { margin-top: 20px; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 8px; }
+    .read-more::after { content: '→'; transition: transform 0.2s; }
+    .blog-card:hover .read-more::after { transform: translateX(4px); }
+
+    .coming-soon { opacity: 0.4; pointer-events: none; }
+
+    footer {
+      padding: 48px 40px; border-top: 1px solid var(--border-subtle);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    footer .logo { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--gold); }
+    footer p { font-size: 13px; color: var(--text-muted); }
+
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: 1fr 1fr; padding: 48px 24px; }
+      nav { padding: 0 24px; }
+    }
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; gap: 16px; }
+      .page-header { padding: 60px 24px 40px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Studio 23 TTL</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#portfolio">Work</a></li>
+      <li><a href="../index.html#specialties">Specialties</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+      <li><a href="../index.html#booking">Book</a></li>
+    </ul>
+  </nav>
+
+  <header class="page-header">
+    <p class="eyebrow">Studio 23 TTL</p>
+    <h1>Tips, Guides & Local Insight</h1>
+    <p>Photography advice, session prep, and local guides — Houston &amp; College Station, TX</p>
+  </header>
+
+  <div class="blog-grid">
+
+    <!-- POST 1 — LIVE -->
+    <a href="graduation-photographer-college-station-tx.html" class="blog-card">
+      <div class="blog-card-img">
+        <img src="../previews/grad-bar-cover.jpg" alt="Graduation photographer College Station TX" loading="lazy" style="object-position: center center;" />
+        <span class="tag">Graduation</span>
+      </div>
+      <div class="blog-card-body">
+        <p class="meta">June 2026 &nbsp;&bull;&nbsp; 5 min read</p>
+        <h2>Graduation Photographer in College Station, TX</h2>
+        <p>Everything you need to know about booking your A&M graduation session — locations, timing, what to wear, and why it matters.</p>
+        <span class="read-more">Read Article</span>
+      </div>
+    </a>
+
+    <!-- POST 2 — COMING SOON -->
+    <div class="blog-card coming-soon">
+      <div class="blog-card-img">
+        <img src="../previews/birthday-cover.jpg" alt="Birthday photoshoot Houston TX" loading="lazy" style="object-position: center center;" />
+        <span class="tag">Portraits</span>
+      </div>
+      <div class="blog-card-body">
+        <p class="meta">Coming Soon</p>
+        <h2>Birthday Photoshoot Photographer in Houston, TX</h2>
+        <p>How to make your birthday shoot feel intentional, elevated, and worth every frame — not just another selfie session.</p>
+        <span class="read-more">Coming Soon</span>
+      </div>
+    </div>
+
+    <!-- POST 3 — COMING SOON -->
+    <div class="blog-card coming-soon">
+      <div class="blog-card-img">
+        <img src="../previews/headshot-cover.jpg" alt="Headshot photographer Bryan TX" loading="lazy" style="object-position: center top;" />
+        <span class="tag">Headshots</span>
+      </div>
+      <div class="blog-card-body">
+        <p class="meta">Coming Soon</p>
+        <h2>Headshot Photographer in Bryan, TX</h2>
+        <p>What separates a LinkedIn photo from a headshot that actually makes people want to work with you — and how we get there.</p>
+        <span class="read-more">Coming Soon</span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="logo">Studio 23 TTL</div>
+    <p>College Station &amp; Houston, TX &nbsp;&bull;&nbsp; &copy; 2026 Studio 23 TTL</p>
+    <p><a href="../index.html" style="color:var(--gold); text-decoration:none; font-size:13px;">← Back to Site</a></p>
+  </footer>
+
+</body>
+</html>
